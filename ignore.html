@@ -5,96 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .navbar {
-      background-color: #800000;
-      color: #FF6A00;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 100px 5px 50px;
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
     }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .logo img{
-        width: 3rem;
-        /* border: 1px solid white; */
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
+    .text-container,
+    .image-container {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
     }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #FF6A00;
-      font-weight: bold;
+    .text-container {
+      background-color: rgba(52, 152, 219, 0.8); /* Background color with 80% opacity */
+      color: #fff;
+      margin-bottom: 20px;
     }
-    a:hover{
-        text-decoration: underline;
+
+    .image-container {
+      background-color: #2ecc71;
     }
-    .menu-icon{
-        display: none;
-    }
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #800000;
+
+    @media (min-width: 768px) {
+      .text-container {
+        float: left;
         width: 50%;
-        text-align: center;
-        padding: 30px 0;
-      }
-      
-      .nav-links a{
-        padding: 20px 0;
+        margin-top: -20px; /* Adjust the overlap distance */
+        position: relative;
+        z-index: 2; /* Ensure text container is above the image container */
       }
 
-      .nav-links.show {
-        display: flex;
-      }
-
-      .menu-icon {
-        display: block;
-        font-size: 28px;
-        cursor: pointer;
-
+      .image-container {
+        float: right;
+        width: 50%;
+        position: relative;
+        z-index: 1;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="navbar">
-    <div class="logo"><img src="new_logo.png" alt="logo"></div>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Menu</a>
-      <a href="#">Book Table</a>
-      <a href="#">Contact</a>
-    </div>
-    <div class="menu-icon">&#9776;</div>
+<div class="container">
+  <div class="text-container">
+    <h1>Text Container</h1>
+    <p>This is the text container.</p>
   </div>
-
-  <script>
-    const menuIcon = document.querySelector('.menu-icon');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuIcon.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-  </script>
+  <div class="image-container">
+    <img src="your-image.jpg" alt="Image">
+  </div>
+</div>
 
 </body>
 </html>
