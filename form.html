@@ -135,9 +135,7 @@
                     height: 70dvh;
                     opacity: 50%;
                 }
-                /* *{
-                    border: 2px solid black;
-                } */
+                
                 main{
                     background-image:  linear-gradient(rgba(255, 106, 0, 0.1), rgba(132, 32, 0, 0.8), #800000),  url("form-background.jpg");
                     background-repeat: no-repeat;
@@ -168,6 +166,10 @@
                     margin: 1vh 0.5vw;
                     padding: 10px;
                 }
+                input:focus, textarea:focus, select:focus{
+                    outline: 3px solid var(--secondary-color);
+                    border: none;
+                }
                 textarea{
                     float: left;
                     min-width: 200px;
@@ -196,7 +198,7 @@
                     position: absolute;
                     right: 13vw;
                     height: 60vh;
-                    top: 100vh;
+                    bottom: -210px;
                 }
 
     </style>
@@ -212,7 +214,7 @@
             <a href="menu.html#menu">Menu</a>
             <a href="index.html#contact">Contact</a>
           </div>
-          <button>Book Table</button>
+          <a href="form.html"><button>Book Table</button></a>
         </div>
         <div class="menu-icon">&#9776;</div>
       </nav>
