@@ -155,16 +155,35 @@
                 form{
                     width: 70vw !important;
                     max-width: 700px;
+                    
+                }
+                .form1{
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
                     flex-wrap: wrap;
                 }
+                .form2{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
                 form input, select{
                     width: 20vw;
                     min-width: 200px;
+                    margin: 0;
                     margin: 1vh 0.5vw;
                     padding: 10px;
+                }
+                input::placeholder{
+                    color: black;
+                }
+                select option{
+                    font-size: 1.2rem;
+                }
+                #meal-type{
+                    width: 21.5vw;
                 }
                 input:focus, textarea:focus, select:focus{
                     outline: 3px solid var(--secondary-color);
@@ -178,19 +197,17 @@
                     margin: 1vh 0.5vw;
                     padding: 10px;
                 }
-                #submit-label{
-                    margin: 20px auto;
-                    display: flex;
-                    justify-content: center;
-                }
-                input[type="submit"]{
+                
+                #submit{
                     background-color: var(--secondary-color);
                     color: var(--primary-color);
                     border: none;
                     border-radius: 20px;
                     font-size: 1.3rem;
+                    width: 200px;
+                    height: 40px;
                 }
-                input[type="submit"]:hover{
+                #submit:hover{
                     transform: scale(1.1);
                 }
                 .des img{
@@ -200,7 +217,20 @@
                     height: 60vh;
                     bottom: -210px;
                 }
-
+                .valid-container input{
+                    width: 10px;
+                    height: 30px;
+                    margin-left: 10px;
+                    font-size: 2rem;
+                }
+                .valid-container{
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 2rem;
+                    display: flex;
+                    align-items: center;
+                    filter: blur(0.6px);
+                }
+                
     </style>
   </head>
   <body>
@@ -212,7 +242,7 @@
           <div class="nav-links">
             <a href="index.html#home">Home</a>
             <a href="menu.html#menu">Menu</a>
-            <a href="index.html#contact">Contact</a>
+            <a href="contact.html">Contact</a>
           </div>
           <a href="form.html"><button>Book Table</button></a>
         </div>
@@ -224,7 +254,8 @@
             <img src="form-logo.svg" alt="logo">
             <h1>Book a reservation</h1>
         </div>
-        <form >
+        <form>
+            <div class="form1">
             <label for="name">
                 <input type="text" id="name" title="Full name" required placeholder="Full name">
             </label>
@@ -238,30 +269,69 @@
                 <input type="number" id="guests" title="number of guests" required placeholder="Number of guests" min="1" max="25">
             </label>
             
-            <label for="date-time">
-                <input type="datetime-local" id="date-time" title="Booking date" required placeholder="Booking date">
+            <label for="date">
+                <input type="date" id="date" title="Booking date" required placeholder="Booking date">
             </label>
             <label for="meal-type">
                 <select name="meal-type" id="meal-type" required title="Meal type">
                     <option selected disabled>Meal type</option>
-                    <option value="South Indian">South Indian</option>              
-                    <option value="North Indian">North Indian</option>
+                    <option value="breakfast">Breakfast (8a.m - 10:30a.m)</option>              
+                    <option value="Lunch">Lunch (12 noon - 3:30p.m)</option>
+                    <option value="Lunch">Dinner (7p.m - 10p.m)</option>
                 </select>
             </label>
             <label for="addinfo">
                 <textarea name="addinfo" id="addinfo" cols="30" rows="10" placeholder="Additional information"></textarea>
             </label>
+        </div>
+        <div class="form2">
+            <div class="valid-container">
+                <span id="num1"></span>
+                <span id="operation">+</span>
+                <span id="num2"></span>
+                <span class="equals">=</span>
+                <label for="input"><input type="text" id="ans" title="Enter sum"></label>
+            </div>
             <label for="submit" id="submit-label">
-                <input type="submit">
+                    <input id="submit" type="submit" onclick="validation()"></input>
             </label>
+        </div>
         </form>
         <div class="des">
             <img src="new_background.svg" alt="design">
         </div>
+        
       </main>
 
 
-    <script src="script.js"></script>
+    <script>
+        const menuIcon = document.querySelector('.menu-icon');
+        const navLinks = document.querySelector('.nav-links');
+            
+        menuIcon.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        });
+
+        function redirect(){
+        window.location.href = 'form.html';
+        }
+        
+        const a = parseInt((Math.random())*10);
+        const b = parseInt((Math.random())*10);
+        const sum = a+b;
+        console.log(sum);
+        document.getElementById("num1").innerText = a;
+        document.getElementById("num2").innerText = b;
+        function validation(){
+            const usum = parseInt(document.getElementById("ans").value);
+            if(sum == usum){
+                alert("Thank you! Your booking was successful!");
+            }
+            else{
+                alert("Invalid!! Try again");
+            }
+        }
+    </script>
 
    </body>
   </html>

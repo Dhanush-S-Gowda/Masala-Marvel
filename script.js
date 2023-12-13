@@ -1,6 +1,14 @@
 const menuIcon = document.querySelector('.menu-icon');
-          const navLinks = document.querySelector('.nav-links');
+const navLinks = document.querySelector('.nav-links');
       
-          menuIcon.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-          });
+menuIcon.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+
+function redirect(){
+  window.location.href = 'form.html';
+}
+
+
+
+    
