@@ -210,13 +210,6 @@
                 #submit:hover{
                     transform: scale(1.1);
                 }
-                .des img{
-                    transform: rotate(-90deg);
-                    position: absolute;
-                    right: 13vw;
-                    height: 60vh;
-                    bottom: -210px;
-                }
                 .valid-container input{
                     width: 10px;
                     height: 30px;
@@ -244,7 +237,7 @@
             <a href="menu.html#menu">Menu</a>
             <a href="contact.html">Contact</a>
           </div>
-          <a href="form.html"><button>Book Table</button></a>
+          <button onclick="redirect()">Book Table</button>
         </div>
         <div class="menu-icon">&#9776;</div>
       </nav>
@@ -290,16 +283,13 @@
                 <span id="operation">+</span>
                 <span id="num2"></span>
                 <span class="equals">=</span>
-                <label for="input"><input type="text" id="ans" title="Enter sum"></label>
+                <label for="input"><input type="text" id="ans" title="Enter sum" pattern="[0-9]{2}"></label>
             </div>
             <label for="submit" id="submit-label">
                     <input id="submit" type="submit" onclick="validation()"></input>
             </label>
         </div>
         </form>
-        <div class="des">
-            <img src="new_background.svg" alt="design">
-        </div>
         
       </main>
 
@@ -319,7 +309,6 @@
         const a = parseInt((Math.random())*10);
         const b = parseInt((Math.random())*10);
         const sum = a+b;
-        console.log(sum);
         document.getElementById("num1").innerText = a;
         document.getElementById("num2").innerText = b;
         function validation(){
